@@ -15,7 +15,7 @@ function renderTasks() {
         taskItem.innerHTML = `
         <input type="checkbox" class="checkbox" ${task.status === "completed" ? "checked" : ""}>
         <p class="task-text">${task.text}</p>
-        <button class="delete">Delete</button>`;
+         <img class="delete" src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" alt="delete">`;
 
         // Checkbox status change
         const checkbox = taskItem.querySelector(".checkbox");
@@ -29,11 +29,12 @@ function renderTasks() {
         // Delete button
         const deleteButton = taskItem.querySelector(".delete");
         deleteButton.addEventListener("click", () => {
-
             /* The line `tasks.splice(index, 1);` is removing an element from the `tasks` array at the
             specified `index`. */
-            tasks.splice(index, 1);
-            renderTasks();
+            if (confirm("Are you sure you want to delete this task?")) {
+                tasks.splice(index, 1);
+                renderTasks();
+            }
         });
 
         tasksContainer.appendChild(taskItem);

@@ -108,3 +108,7 @@ button:hover {
 .task-item button:hover {
     background: #e53e3e;
 }
+
+.delete{
+    width: 6%;
+}
